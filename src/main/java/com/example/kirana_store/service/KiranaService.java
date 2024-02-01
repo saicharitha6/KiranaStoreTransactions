@@ -24,7 +24,8 @@ public class KiranaService {
     @Transactional
     public KiranaStore saveTransaction(KiranaStore transaction) {
         // Implement currency conversion using the provided API
-        double convertedAmount = currencyConversionService.convertToINR(transaction.getAmount(), transaction.getCurrency());
+        double convertedAmount = currencyConversionService.convertToINR(transaction.getAmount(),
+                transaction.getCurrency());
         transaction.setAmount(convertedAmount);
 
         return kiranaStoreRepository.save(transaction);

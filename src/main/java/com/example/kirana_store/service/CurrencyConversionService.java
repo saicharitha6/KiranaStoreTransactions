@@ -25,11 +25,13 @@ public class CurrencyConversionService {
         try {
             logger.info("Sending currency conversion request to: {}", requestUrl);
 
-            CurrencyConversionResponse response = restTemplate.getForObject(requestUrl, CurrencyConversionResponse.class);
+            CurrencyConversionResponse response = restTemplate.getForObject(requestUrl,
+                    CurrencyConversionResponse.class);
 
             if (response != null && response.getRates() != null && response.getRates().containsKey("INR")) {
                 double conversionRate = response.getRates().get("INR");
-                logger.info("Currency conversion successful. Converted {} {} to INR at rate {}.", amount, sourceCurrency, conversionRate);
+                logger.info("Currency conversion successful. Converted {} {} to INR at rate {}.", amount,
+                        sourceCurrency, conversionRate);
                 return amount * conversionRate;
             } else {
                 throw new RestClientException("Error in currency conversion response");

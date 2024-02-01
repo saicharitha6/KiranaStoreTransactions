@@ -28,7 +28,8 @@ public class TransactionController {
     }
 
     @GetMapping("/daily-report/{date}")
-    public ResponseEntity<List<KiranaStore>> getDailyTransactionsReport(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public ResponseEntity<List<KiranaStore>> getDailyTransactionsReport(
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         List<KiranaStore> dailyReport = transactionService.getDailyTransactionsReport(date.atStartOfDay());
         return ResponseEntity.ok(dailyReport);
     }

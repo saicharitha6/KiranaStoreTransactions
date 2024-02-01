@@ -12,4 +12,3 @@ public class RestClientException extends org.springframework.web.client.RestClie
         super(message, cause);
     }
 }
-
